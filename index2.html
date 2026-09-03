@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박선호 | 자기소개서 - 크로스핏터 사진 콜라주</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;900&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #0d0d0d;
+            min-height: 100vh;
+            padding: 40px 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 메인 보드판 */
+        .board {
+            max-width: 950px;
+            width: 100%;
+            position: relative;
+            background: #b87333;
+            padding: 40px 20px;
+            border-radius: 4px;
+            border: 12px solid #4a2306;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            overflow: hidden;
+            min-height: 1400px;
+        }
+
+        /* --------------------------------------------------
+           오리지 않고 그대로 붙인 50장의 사진 공통 스타일
+        -------------------------------------------------- */
+        .crossfit-athlete {
+            position: absolute;
+            z-index: 1;
+            border: 4px solid #ffffff; /* 사진 테두리 그대로 유지 */
+            border-radius: 2px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            filter: contrast(105%) brightness(95%);
+            transition: transform 0.2s, z-index 0.2s;
+        }
+
+        .crossfit-athlete:hover {
+            transform: scale(1.15) rotate(0deg) !important;
+            z-index: 10 !important;
+            box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --------------------------------------------------
+           50개 사진 개별 위치 및 회전 설정
+        -------------------------------------------------- */
+        .p1 { width: 110px; height: 130px; top: 10px; left: 10px; transform: rotate(-8deg); }
+        .p2 { width: 120px; height: 140px; top: 5px; left: 110px; transform: rotate(12deg); }
+        .p3 { width: 100px; height: 120px; top: 20px; left: 220px; transform: rotate(-5deg); }
+        .p4 { width: 130px; height: 150px; top: 10px; left: 310px; transform: rotate(15deg); }
+        .p5 { width: 115px; height: 135px; top: 5px; left: 430px; transform: rotate(-10deg); }
+        .p6 { width: 125px; height: 145px; top: 15px; left: 535px; transform: rotate(7deg); }
+        .p7 { width: 105px; height: 125px; top: 0px; left: 650px; transform: rotate(-12deg); }
+        .p8 { width: 135px; height: 150px; top: 10px; right: 10px; transform: rotate(6deg); }
+
+        .p9 { width: 120px; height: 140px; top: 130px; left: -15px; transform: rotate(14deg); }
+        .p10 { width: 115px; height: 135px; top: 140px; left: 95px; transform: rotate(-6deg); }
+        .p11 { width: 130px; height: 150px; top: 125px; left: 200px; transform: rotate(10deg); }
+        .p12 { width: 110px; height: 130px; top: 135px; left: 320px; transform: rotate(-15deg); }
+        .p13 { width: 125px; height: 140px; top: 120px; left: 420px; transform: rotate(8deg); }
+        .p14 { width: 105px; height: 125px; top: 145px; left: 530px; transform: rotate(-4deg); }
+        .p15 { width: 130px; height: 145px; top: 130px; left: 625px; transform: rotate(11deg); }
+        .p16 { width: 115px; height: 135px; top: 140px; right: -10px; transform: rotate(-9deg); }
+
+        .p17 { width: 125px; height: 145px; top: 260px; left: 5px; transform: rotate(-11deg); }
+        .p18 { width: 110px; height: 130px; top: 270px; left: 115px; transform: rotate(7deg); }
+        .p19 { width: 135px; height: 150px; top: 255px; left: 215px; transform: rotate(-13deg); }
+        .p20 { width: 105px; height: 125px; top: 265px; left: 335px; transform: rotate(5deg); }
+        .p21 { width: 120px; height: 140px; top: 250px; left: 430px; transform: rotate(-8deg); }
+        .p22 { width: 130px; height: 145px; top: 275px; left: 540px; transform: rotate(14deg); }
+        .p23 { width: 115px; height: 135px; top: 260px; left: 655px; transform: rotate(-6deg); }
+        .p24 { width: 125px; height: 140px; top: 270px; right: 5px; transform: rotate(9deg); }
+
+        .p25 { width: 130px; height: 150px; top: 390px; left: -10px; transform: rotate(6deg); }
+        .p26 { width: 105px; height: 125px; top: 400px; left: 105px; transform: rotate(-12deg); }
+        .p27 { width: 120px; height: 140px; top: 385px; left: 200px; transform: rotate(8deg); }
+        .p28 { width: 125px; height: 145px; top: 395px; left: 310px; transform: rotate(-5deg); }
+        .p29 { width: 110px; height: 130px; top: 380px; left: 425px; transform: rotate(11deg); }
+        .p30 { width: 135px; height: 150px; top: 405px; left: 525px; transform: rotate(-14deg); }
+        .p31 { width: 115px; height: 135px; top: 390px; left: 645px; transform: rotate(7deg); }
+        .p32 { width: 120px; height: 140px; top: 400px; right: -5px; transform: rotate(-10deg); }
+
+        .p33 { width: 115px; height: 135px; top: 520px; left: 10px; transform: rotate(-7deg); }
+        .p34 { width: 130px; height: 145px; top: 530px; left: 115px; transform: rotate(13deg); }
+        .p35 { width: 105px; height: 125px; top: 515px; left: 235px; transform: rotate(-9deg); }
+        .p36 { width: 125px; height: 140px; top: 525px; left: 330px; transform: rotate(6deg); }
+        .p37 { width: 120px; height: 150px; top: 510px; left: 445px; transform: rotate(-11deg); }
+        .p38 { width: 110px; height: 130px; top: 535px; left: 555px; transform: rotate(8deg); }
+        .p39 { width: 135px; height: 145px; top: 520px; left: 655px; transform: rotate(-5deg); }
+        .p40 { width: 125px; height: 135px; top: 525px; right: 0px; transform: rotate(12deg); }
+
+        .p41 { width: 120px; height: 140px; top: 650px; left: -5px; transform: rotate(10deg); }
+        .p42 { width: 110px; height: 130px; top: 660px; left: 105px; transform: rotate(-8deg); }
+        .p43 { width: 130px; height: 145px; top: 645px; left: 205px; transform: rotate(14deg); }
+        .p44 { width: 125px; height: 150px; top: 655px; left: 325px; transform: rotate(-6deg); }
+        .p45 { width: 105px; height: 125px; top: 640px; left: 440px; transform: rotate(9deg); }
+        .p46 { width: 135px; height: 140px; top: 665px; left: 535px; transform: rotate(-13deg); }
+        .p47 { width: 115px; height: 135px; top: 660px; left: 660px; transform: rotate(5deg); }
+        .p48 { width: 120px; height: 145px; top: 655px; right: -10px; transform: rotate(-11deg); }
+
+        .p49 { width: 140px; height: 160px; top: 780px; left: 20%; transform: rotate(-7deg); }
+        .p50 { width: 140px; height: 160px; top: 780px; right: 20%; transform: rotate(9deg); }
+
+        /* --------------------------------------------------
+           오려 붙인 텍스트 박스 종이 (z-index: 5로 상위 배치)
+        -------------------------------------------------- */
+        .paper-cut {
+            background-color: #ffffff;
+            padding: 16px;
+            border: 2px solid #000;
+            margin-bottom: 24px;
+            box-shadow: 4px 4px 0 #000;
+            position: relative;
+            z-index: 5;
+        }
+
+        .pin {
+            width: 16px; height: 16px;
+            background-color: #ff2a2a;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px; left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+            z-index: 6;
+        }
+
+        .tape {
+            position: absolute;
+            width: 80px; height: 25px;
+            background: rgba(255, 255, 180, 0.7);
+            border: 1px solid rgba(0,0,0,0.15);
+            top: -10px;
+            transform: rotate(-12deg);
+            z-index: 6;
+        }
+
+        #title-paper { transform: rotate(-2deg); background-color: #ff3b30; color: white; border-color: white; box-shadow: 4px 4px 0 white;}
+        #name-paper { transform: rotate(1.5deg); left: 10px; width: fit-content; padding-right: 130px; }
+        #info-paper { transform: rotate(-1.5deg); background-color: #fef08a; border-color: #000;}
+        #hobby-paper { transform: rotate(2deg); background-color: rgba(18, 18, 18, 0.96); color: #fff; border-color: #fff; }
+        #goal-paper { transform: rotate(-2deg); background-color: rgba(255, 255, 255, 0.96); color: #000; left: -8px;}
+        #project-paper { transform: rotate(1deg); background-color: rgba(209, 250, 229, 0.96); border-color: #065f46; color: #065f46;}
+
+        h1, h2, h3 { font-weight: 900; }
+        h1 { font-size: 2.4rem; letter-spacing: -2px;}
+        h2 { font-size: 1.2rem; color: #444; }
+        #hobby-paper h2 { color: #fecaca; }
+
+        p { line-height: 1.5; font-size: 0.95rem; }
+        strong { font-weight: 700; text-decoration: underline;}
+
+        ul { list-style: none; display: flex; gap: 10px; margin-top: 8px; }
+        ul li { background-color: #eee; padding: 2px 8px; border: 1px solid #000; font-size: 0.8rem; color: #000; }
+
+        .profile-img {
+            width: 95px; height: 95px;
+            object-fit: cover;
+            position: absolute;
+            top: 12px; right: 12px;
+            transform: rotate(6deg);
+            border: 3px solid #000;
+            box-shadow: 3px 3px 0 #000;
+        }
+
+        a { color: inherit; text-decoration: none; border-bottom: 2px solid; font-weight: 700; }
+        #hobby-paper a:hover { color: #fecaca; }
+
+        @media (max-width: 600px) {
+            .board { padding: 15px 10px; }
+            h1 { font-size: 1.8rem; }
+            .profile-img { width: 70px; height: 70px; }
+            #name-paper { padding-right: 85px; }
+            .crossfit-athlete { opacity: 0.35; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="board">
+        <div class="pin"></div>
+
+        <!-- 🏋️‍♂️ 원본 직사각형 스티커 사진 50장 -->
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=300" class="crossfit-athlete p1" alt="Athlete 1">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=300" class="crossfit-athlete p2" alt="Athlete 2">
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=300" class="crossfit-athlete p3" alt="Athlete 3">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=300" class="crossfit-athlete p4" alt="Athlete 4">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=300" class="crossfit-athlete p5" alt="Athlete 5">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=300" class="crossfit-athlete p6" alt="Athlete 6">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=300" class="crossfit-athlete p7" alt="Athlete 7">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=300" class="crossfit-athlete p8" alt="Athlete 8">
+
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=300" class="crossfit-athlete p9" alt="Athlete 9">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=300" class="crossfit-athlete p10" alt="Athlete 10">
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=300&crop=faces" class="crossfit-athlete p11" alt="Athlete 11">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=300&crop=entropy" class="crossfit-athlete p12" alt="Athlete 12">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=300&crop=top" class="crossfit-athlete p13" alt="Athlete 13">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=300&crop=bottom" class="crossfit-athlete p14" alt="Athlete 14">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=300&crop=left" class="crossfit-athlete p15" alt="Athlete 15">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=300&crop=right" class="crossfit-athlete p16" alt="Athlete 16">
+
+        <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=300" class="crossfit-athlete p17" alt="Athlete 17">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=300" class="crossfit-athlete p18" alt="Athlete 18">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=300" class="crossfit-athlete p19" alt="Athlete 19">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=300" class="crossfit-athlete p20" alt="Athlete 20">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=300&crop=faces" class="crossfit-athlete p21" alt="Athlete 21">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=300&crop=top" class="crossfit-athlete p22" alt="Athlete 22">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=300&crop=bottom" class="crossfit-athlete p23" alt="Athlete 23">
+        <img src="https://images.unsplash.com/photo-1597464115160-c3d3a6d4825d?q=80&w=300&crop=center" class="crossfit-athlete p24" alt="Athlete 24">
+
+        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=300" class="crossfit-athlete p25" alt="Athlete 25">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=300" class="crossfit-athlete p26" alt="Athlete 26">
+        <img src="https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?q=80&w=300" class="crossfit-athlete p27" alt="Athlete 27">
+        <img src="https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=300" class="crossfit-athlete p28" alt="Athlete 28">
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=300&fit=clamp" class="crossfit-athlete p29" alt="Athlete 29">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=300&fit=clamp" class="crossfit-athlete p30" alt="Athlete 30">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=300&fit=clamp" class="crossfit-athlete p31" alt="Athlete 31">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=300&fit=clamp" class="crossfit-athlete p32" alt="Athlete 32">
+
+        <img src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=300" class="crossfit-athlete p33" alt="Athlete 33">
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=300&sat=-50" class="crossfit-athlete p34" alt="Athlete 34">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=300&sat=-50" class="crossfit-athlete p35" alt="Athlete 35">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=300&sat=-50" class="crossfit-athlete p36" alt="Athlete 36">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=300&sat=-50" class="crossfit-athlete p37" alt="Athlete 37">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=300&sat=-50" class="crossfit-athlete p38" alt="Athlete 38">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=300&sat=-50" class="crossfit-athlete p39" alt="Athlete 39">
+        <img src="https://images.unsplash.com/photo-1597464115160-c3d3a6d4825d?q=80&w=300&sat=-50" class="crossfit-athlete p40" alt="Athlete 40">
+
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=300&sat=50" class="crossfit-athlete p41" alt="Athlete 41">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=300&sat=50" class="crossfit-athlete p42" alt="Athlete 42">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=300&sat=50" class="crossfit-athlete p43" alt="Athlete 43">
+        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=300&sat=50" class="crossfit-athlete p44" alt="Athlete 44">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=300&sat=50" class="crossfit-athlete p45" alt="Athlete 45">
+        <img src="https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?q=80&w=300&sat=50" class="crossfit-athlete p46" alt="Athlete 46">
+        <img src="https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=300&sat=50" class="crossfit-athlete p47" alt="Athlete 47">
+        <img src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=300&sat=50" class="crossfit-athlete p48" alt="Athlete 48">
+
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=300&hue=30" class="crossfit-athlete p49" alt="Athlete 49">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=300&hue=30" class="crossfit-athlete p50" alt="Athlete 50">
+
+
+        <!-- 📝 자기소개 텍스트 박스들 -->
+        <div class="paper-cut" id="title-paper">
+            <h1>자기소개</h1>
+        </div>
+
+        <div class="paper-cut" id="name-paper">
+            <h2>이름</h2>
+            <p><strong>박선호</strong></p>
+            <img src="https://phinf.pstatic.net/contact/20230817_193/16922799308922RRFR_PNG/KakaoTalk_20230715_222527423.png?type=s160" alt="박선호 사진" class="profile-img">
+        </div>
+
+        <div class="paper-cut" id="info-paper">
+            <div class="tape" style="top: -5px; left: -20px; transform: rotate(-30deg);"></div>
+            <ul>
+                <li>학번: 22300283</li>
+                <li>전공: 컴퓨터공학심화</li>
+            </ul>
+        </div>
+
+        <div class="paper-cut" id="hobby-paper">
+            <div class="pin" style="background-color: blue;"></div>
+            <h2>관심분야 / 취미</h2>
+            <p>저는 운동 특히 <a href="https://www.crossfit.com/" target="_blank">크로스핏</a>을 진짜 좋아합니다. 책 읽기, 노래 부르기, 여행, 그리고 옷 입고 꾸미는 것도 좋아합니다.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">👇 제 인스타그램</p>
+            <a href="https://www.instagram.com/cozam00?igsi=MXc5eG5sa3N6MTExNA%3D%3D&utm_source=qr" target="_blank">@cozam00</a>
+        </div>
+
+        <div class="paper-cut" id="goal-paper">
+            <div class="tape" style="top: -8px; right: -30px; transform: rotate(20deg);"></div>
+            <h3>이번 학기 배우고 싶은 것</h3>
+            <p>방학부터 수영을 배우고 있었는데, 이번 학기에도 계속 배워서 꼭 마스터하고 싶습니다. 🏊‍♂️</p>
+        </div>
+
+        <div class="paper-cut" id="project-paper">
+            <div class="pin" style="background-color: yellow; color: black; font-weight: 900; font-size: 1.2rem; display: flex; justify-content: center; align-items: center;">!</div>
+            <h3>만들어보고 싶은 서비스 / 프로젝트</h3>
+            <p>한동인들을 위한 웹페이지를 만들어보고 싶습니다. 캠퍼스 지도를 삽입해서 사용자들이 위치를 찍어 인스타 게시물을 올리듯이 게시글을 공유할 수 있게 하여, 졸업 후에도 한동에서의 추억들을 모두와 함께 공유할 수 있도록 하고 싶습니다. 🗺️</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
